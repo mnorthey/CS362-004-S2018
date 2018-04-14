@@ -93,6 +93,13 @@ int shuffle(int player, struct gameState *state);
 /* Assumes all cards are now in deck array (or hand/played):  discard is
  empty */
 
+// Separated card play functions for use in testing
+int play_adventurer(struct gameState *state);
+int play_smithy(struct gameState *state, int handPos);
+int play_baron(int choice1, struct gameState *state);
+int play_steward(int choice1, int choice2, int choice3, struct gameState *state, int handPos);
+int play_sea_hag(struct gameState *state);
+
 int playCard(int handPos, int choice1, int choice2, int choice3,
 	     struct gameState *state);
 /* Play card with index handPos from current player's hand */
