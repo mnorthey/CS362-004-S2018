@@ -198,7 +198,6 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
   return 0;
 }
 
-
 int shuffle(int player, struct gameState *state) {
  
 
@@ -780,8 +779,7 @@ int play_sea_hag(struct gameState *state)
     
     for (i = 0; i < state->numPlayers - 1; i++){    // TESTING: MADE numPlayers -1
         if (i != currentPlayer){
-            state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];
-			state->deckCount[i]--;
+            state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];			    state->deckCount[i]--;
             state->discardCount[i]++;
             state->deck[i][state->deckCount[i]--] = curse;//Top card now a curse
         }
@@ -811,7 +809,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     {
     case adventurer:
             play_adventurer(state);
-			return 0;
 			
     case council_room:
       //+4 Cards
@@ -956,7 +953,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 		
     case smithy:
             play_smithy(state, handPos);
-			return 0;
 		
     case village:
       //+1 Card
@@ -971,7 +967,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 		
     case baron:
             play_baron(choice1, state);
-			return 0;
 		
     case great_hall:
       //+1 Card
@@ -1037,7 +1032,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 		
     case steward:
             play_steward(choice1, choice2, choice3, state, handPos);
-			return 0;
 		
     case tribute:
       if ((state->discardCount[nextPlayer] + state->deckCount[nextPlayer]) <= 1){
@@ -1234,7 +1228,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 		
     case sea_hag:
             play_sea_hag(state);
-			return 0;
 		
     case treasure_map:
       //search hand for another treasure_map
@@ -1272,6 +1265,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
 int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
 {
+	
   //if card is not trashed, added to Played pile 
   if (trashFlag < 1)
     {
@@ -1350,22 +1344,22 @@ int updateCoins(int player, struct gameState *state, int bonus)
 	
   //reset coin count
   state->coins = 0;
-  
+
   //add coins for each Treasure card in player's hand
   for (i = 0; i < state->handCount[player]; i++)
     {
-		if (state->hand[player][i] == copper)
-		{
-		  state->coins += 1;
-		}
-		  else if (state->hand[player][i] == silver)
-		{
-		  state->coins += 2;
-		}
-		  else if (state->hand[player][i] == gold)
-		{
-		  state->coins += 3;
-		}	
+      if (state->hand[player][i] == copper)
+	{
+	  state->coins += 1;
+	}
+      else if (state->hand[player][i] == silver)
+	{
+	  state->coins += 2;
+	}
+      else if (state->hand[player][i] == gold)
+	{
+	  state->coins += 3;
+	}	
     }	
 
   //add bonus
