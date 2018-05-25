@@ -687,7 +687,7 @@ int smithy_function(struct gameState *state, int handPos)
 	int currentPlayer = whoseTurn(state);
 	int i = 0;
 	//+3 Cards
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < 3; i++)
 	{
 		drawCard(currentPlayer, state);
 	}
