@@ -11,7 +11,6 @@
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "rngs.h"
-#include "randomtestadventurer.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -22,13 +21,16 @@
 // Set NOISY_TEST to 0 to remove printfs from output
 #define NOISY_TEST 1
 
+int testAdventurer(int p, int pos, struct gameState *post);
+void listCards(int *arr, int size);
+
 /****************************************************
 *
-* run_randomtestadventurer()
+* main()
 *
 ****************************************************/
 
-int run_randomtestadventurer() {
+int main() {
 	// Output file header
 	printf("------------------------------------------------------------------\n-\n");
 	printf("- RANDOM TEST SET 0: Adventurer\n-\n");
@@ -595,30 +597,3 @@ void listCards(int *arr, int size)
 
 	return;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
